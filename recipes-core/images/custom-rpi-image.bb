@@ -6,4 +6,5 @@ DESCRIPTION = "This is a customized version of the crpi-test-image image availab
 
 # We specify here the additional recipes to be added to the build
 IMAGE_INSTALL += " \
+    nano \
     "
