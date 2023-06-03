@@ -1,0 +1,179 @@
+From cc453b5b5f2cc0d397f7d1447070688a6808cd29 Mon Sep 17 00:00:00 2001
+From: OpenEmbedded <oe.patch@oe>
+Date: Sat, 3 Jun 2023 12:51:23 +0200
+Subject: [PATCH] add mpu9250 and bmp280 to dts
+
+---
+ arch/arm/boot/dts/bcm2709-rpi-2-b.dts      | 30 ++++++++++++++++++++++
+ arch/arm/boot/dts/bcm2710-rpi-2-b.dts      | 30 ++++++++++++++++++++++
+ arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts | 30 ++++++++++++++++++++++
+ arch/arm/boot/dts/bcm2710-rpi-3-b.dts      | 30 ++++++++++++++++++++++
+ 4 files changed, 120 insertions(+)
+
+diff --git a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
+index 87eeacdd797a..72967f3c81a2 100644
+--- a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
++++ b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
+@@ -143,6 +143,36 @@ &i2c1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c1_pins>;
+ 	clock-frequency = <100000>;
++	mpu9250@68 {
++		compatible = "inven,mpu9250";
++		reg = <0x68>;
++		//interrupt-parent = <&gpio2>;
++		//interrupts = <9>;
++		int_config  = <0x10>;
++		level_shifter = <0>;
++		axis_map_x = <0>;
++		axis_map_y = <1>;
++		axis_map_z = <2>;
++		negate_x = <0>;
++		negate_y = <0>;
++		negate_z = <0>;
++		inven,secondary_type = "compass";
++		inven,secondary_name = "ak8963";
++		inven,secondary_reg = <0x0c>;
++		inven,secondary_axis_map_x = <0>;
++		inven,secondary_axis_map_y = <1>;
++		inven,secondary_axis_map_z = <2>;
++		inven,secondary_negate_x = <0>;
++		inven,secondary_negate_y = <0>;
++		inven,secondary_negate_z = <0>;
++		inven,aux_type = "pressure";
++		inven,aux_name = "bmp280";
++		inven,aux_reg = <0x76>;
++	};
++	bmp280@76{
++		compatible = "bmp280";
++		reg = <0x76>;
++	};
+ };
+ 
+ &i2c2 {
+diff --git a/arch/arm/boot/dts/bcm2710-rpi-2-b.dts b/arch/arm/boot/dts/bcm2710-rpi-2-b.dts
+index 6ff23738f48a..50c8de3793e8 100644
+--- a/arch/arm/boot/dts/bcm2710-rpi-2-b.dts
++++ b/arch/arm/boot/dts/bcm2710-rpi-2-b.dts
+@@ -143,6 +143,36 @@ &i2c1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c1_pins>;
+ 	clock-frequency = <100000>;
++	mpu9250@68 {
++		compatible = "inven,mpu9250";
++		reg = <0x68>;
++		//interrupt-parent = <&gpio2>;
++		//interrupts = <9>;
++		int_config  = <0x10>;
++		level_shifter = <0>;
++		axis_map_x = <0>;
++		axis_map_y = <1>;
++		axis_map_z = <2>;
++		negate_x = <0>;
++		negate_y = <0>;
++		negate_z = <0>;
++		inven,secondary_type = "compass";
++		inven,secondary_name = "ak8963";
++		inven,secondary_reg = <0x0c>;
++		inven,secondary_axis_map_x = <0>;
++		inven,secondary_axis_map_y = <1>;
++		inven,secondary_axis_map_z = <2>;
++		inven,secondary_negate_x = <0>;
++		inven,secondary_negate_y = <0>;
++		inven,secondary_negate_z = <0>;
++		inven,aux_type = "pressure";
++		inven,aux_name = "bmp280";
++		inven,aux_reg = <0x76>;
++	};
++	bmp280@76{
++		compatible = "bmp280";
++		reg = <0x76>;
++	};
+ };
+ 
+ &i2c2 {
+diff --git a/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts b/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts
+index 5f248fb01bca..9a4be11d6676 100644
+--- a/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts
++++ b/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts
+@@ -219,6 +219,36 @@ &i2c1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c1_pins>;
+ 	clock-frequency = <100000>;
++	mpu9250@68 {
++		compatible = "inven,mpu9250";
++		reg = <0x68>;
++		//interrupt-parent = <&gpio2>;
++		//interrupts = <9>;
++		int_config  = <0x10>;
++		level_shifter = <0>;
++		axis_map_x = <0>;
++		axis_map_y = <1>;
++		axis_map_z = <2>;
++		negate_x = <0>;
++		negate_y = <0>;
++		negate_z = <0>;
++		inven,secondary_type = "compass";
++		inven,secondary_name = "ak8963";
++		inven,secondary_reg = <0x0c>;
++		inven,secondary_axis_map_x = <0>;
++		inven,secondary_axis_map_y = <1>;
++		inven,secondary_axis_map_z = <2>;
++		inven,secondary_negate_x = <0>;
++		inven,secondary_negate_y = <0>;
++		inven,secondary_negate_z = <0>;
++		inven,aux_type = "pressure";
++		inven,aux_name = "bmp280";
++		inven,aux_reg = <0x76>;
++	};
++	bmp280@76{
++		compatible = "bmp280";
++		reg = <0x76>;
++	};
+ };
+ 
+ &i2c2 {
+diff --git a/arch/arm/boot/dts/bcm2710-rpi-3-b.dts b/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
+index 10485ad72d29..c8cb0584ba01 100644
+--- a/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
++++ b/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
+@@ -234,6 +234,36 @@ &i2c1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c1_pins>;
+ 	clock-frequency = <100000>;
++	mpu9250@68 {
++		compatible = "inven,mpu9250";
++		reg = <0x68>;
++		//interrupt-parent = <&gpio2>;
++		//interrupts = <9>;
++		int_config  = <0x10>;
++		level_shifter = <0>;
++		axis_map_x = <0>;
++		axis_map_y = <1>;
++		axis_map_z = <2>;
++		negate_x = <0>;
++		negate_y = <0>;
++		negate_z = <0>;
++		inven,secondary_type = "compass";
++		inven,secondary_name = "ak8963";
++		inven,secondary_reg = <0x0c>;
++		inven,secondary_axis_map_x = <0>;
++		inven,secondary_axis_map_y = <1>;
++		inven,secondary_axis_map_z = <2>;
++		inven,secondary_negate_x = <0>;
++		inven,secondary_negate_y = <0>;
++		inven,secondary_negate_z = <0>;
++		inven,aux_type = "pressure";
++		inven,aux_name = "bmp280";
++		inven,aux_reg = <0x76>;
++	};
++	bmp280@76{
++		compatible = "bmp280";
++		reg = <0x76>;
++	};
+ };
+ 
+ &i2c2 {
+-- 
+2.34.1
+

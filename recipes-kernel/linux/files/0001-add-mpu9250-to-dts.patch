@@ -1,0 +1,30 @@
+From 26242557d8d2c3999b2dee66eabd139658ed05eb Mon Sep 17 00:00:00 2001
+From: OpenEmbedded <oe.patch@oe>
+Date: Sat, 3 Jun 2023 12:51:23 +0200
+Subject: [PATCH] add mpu9250 to dts
+
+---
+ arch/arm/boot/dts/bcm2709-rpi-2-b.dts | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
+index 87eeacdd797a..b21b85a01d3c 100644
+--- a/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
++++ b/arch/arm/boot/dts/bcm2709-rpi-2-b.dts
+@@ -143,6 +143,13 @@ &i2c1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c1_pins>;
+ 	clock-frequency = <100000>;
++	mpu9250: mpu9250@68{
++		compatible = "inven,mpu9250";
++		reg = <0x68>;
++		inven,secondary_type = "compass";
++		inven,secondary_name = "ak8963";
++		inven,secondary_reg = <0x0c>;
++	};
+ };
+ 
+ &i2c2 {
+-- 
+2.34.1
+
