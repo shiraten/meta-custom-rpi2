@@ -9,4 +9,5 @@ IMAGE_INSTALL += " \
     hello-world \
     blink-test \
     pwm-test \
+    nano \
     "
