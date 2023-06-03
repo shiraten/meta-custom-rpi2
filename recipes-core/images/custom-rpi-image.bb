@@ -10,4 +10,6 @@ IMAGE_INSTALL += " \
     blink-test \
     pwm-test \
     nano \
+    ldd-hello-world \
+    mymodules-autoload \
     "
