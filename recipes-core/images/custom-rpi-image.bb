@@ -6,10 +6,12 @@ DESCRIPTION = "This is a customized version of the crpi-test-image image availab
 
 # We specify here the additional recipes to be added to the build
 IMAGE_INSTALL += " \
+    i2c-tools \
     hello-world \
     blink-test \
     pwm-test \
     nano \
     ldd-hello-world \
     mymodules-autoload \
+    mpu9250 \
     "
