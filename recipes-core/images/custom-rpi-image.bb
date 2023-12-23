@@ -12,4 +12,5 @@ IMAGE_INSTALL += " \
     nano \
     ldd-hello-world \
     mymodules-autoload \
+    spdk \
     "
